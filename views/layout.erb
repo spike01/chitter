@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% if current_user %>
+    <title>Chitter</title>
+  <% else %>
+    <title>Welcome to Chitter - Login</title>
+  <% end %>
+    <link rel="stylesheet" type="text/css" href="/css/application.css">  
+  </head>
+<body>
+  <%= yield %>
+</body>
+</html>

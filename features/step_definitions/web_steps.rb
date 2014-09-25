@@ -14,7 +14,7 @@ When(/^I sign up$/) do
 end
 
 When(/^I choose a username$/) do
-  fill_in('signup-uname', with: 'spikenox')
+  #fill_in('Username', with: 'spikenox')
   click_button('Create my account')
 end
 

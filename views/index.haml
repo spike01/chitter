@@ -1,0 +1,12 @@
+-#-if current_user
+-#  %= current_user.fullname 
+-#  %= current_user.username 
+-#-else >
+%h1 New to Twitter?
+%h2 Sign up
+%form{action: 'signup', method: 'POST', class: 'sign-up'}
+%input{name: 'fullname', placeholder: 'Full name'}
+%input{name: 'email', placeholder: 'E-mail'}
+%input{name: 'password', type: 'password' placeholder: 'Password'}
+  %button{type: 'submit'}Sign up for Chitter
+

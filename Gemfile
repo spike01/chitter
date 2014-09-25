@@ -4,6 +4,7 @@ gem 'capybara'
 gem 'data_mapper'
 gem 'dm-postgres-adapter'
 gem 'thin'
+gem 'haml'
 
 group :development, :test do
   gem "rspec"

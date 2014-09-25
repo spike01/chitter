@@ -1,0 +1,11 @@
+!!!
+%html
+  %head
+  -if current_user 
+    %title Chitter
+  -else 
+    %title Welcome to Chitter - Login
+  -end 
+    %link{rel: "stylesheet", type: "text/css", href: "/css/application.css"} 
+  %body
+    %= yield >
