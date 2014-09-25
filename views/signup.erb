@@ -1,0 +1,14 @@
+<h1>Join Chitter today.</h1>
+
+<form action='/account/create' method='POST'>
+Full name
+<input name='fullname' value='<%= @fullname %>'>
+Email address
+<input name='email' value='<%= @email %>'>
+Create a password
+<input name='password' value='<%= @password %>' type='password'>
+Choose your username
+<input id='signup-uname' name='username'>
+<button type='submit'>Create my account</button>
+</form>
+

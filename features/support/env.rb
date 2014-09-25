@@ -2,13 +2,14 @@
 
 ENV['RACK_ENV'] = 'test'
 
-require File.join(File.dirname(__FILE__), '..', '..', 'lib/chitter.rb')
+require File.join(File.dirname(__FILE__), '..', '..', 'chitter.rb')
 
 require 'capybara'
 require 'capybara/cucumber'
 require 'rspec'
 
-Capybara.app = Chitter
+Capybara.app, _ = Rack::Builder.parse_file(File.expand_path('../../../config.ru', __FILE__))
+
 
 class ChitterWorld
   include Capybara::DSL
