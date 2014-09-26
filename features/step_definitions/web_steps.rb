@@ -9,13 +9,25 @@ end
 When(/^I sign up$/) do
   fill_in('Full name', with: 'Spike Lindsey')
   fill_in('E-mail', with: 'spike01@gmail.com')
-  fill_in('Password', with: 'makersWelcome')
+  fill_in('password', with: 'makersWelcome')
   click_button('Sign up for Chitter')
 end
 
 When(/^I choose a username$/) do
-  #fill_in('Username', with: 'spikenox')
+  fill_in('username', with: 'spikenox')
   click_button('Create my account')
+end
+
+When(/^I put in my login details$/) do
+  fill_in('login-uname', with: 'spikenox')
+  fill_in('login-pword', with: 'makersWelcome')
+  click_button('Sign in')
+end
+
+When(/^I put my login details incorrectly$/) do
+  fill_in('login-uname', with: 'spikenox')
+  fill_in('login-pword', with: 'mome')
+  click_button('Sign in')
 end
 
 Then(/^I should see "(.*?)"$/) do |text|

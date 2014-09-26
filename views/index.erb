@@ -1,7 +1,12 @@
 <% if current_user %>
   <%= current_user.fullname %>
-  <%= current_user.username %>
+  @<%= current_user.username %>
 <% else %>
+  <form action='sessions' method='POST'>
+    <input name='login-uname' placeholder='Username'>
+    <input name='login-pword' type='password' placeholder='Password'>
+    <button type='submit'>Sign in</button>
+  </form>
 <h1>New to Twitter?</h1><h2>Sign up</h2>
 <form action='signup' method='POST' class='sign-up'>
   <input name='fullname' placeholder='Full name'>
