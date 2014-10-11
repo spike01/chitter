@@ -3,8 +3,16 @@
   @<%= current_user.username %>
   <%= partial "partials/peepdisplay" %>
 <% else %>
-  <%= partial "partials/signin" %>
-  <%= partial "partials/signup" %> 
+  <main>
+  <section class="front-card">
+  <h1> Welcome to Chitter.</h1>
+  <p>Connect with fellow Makers — and other fascinating code-monkeys. Get in-the-moment updates on nothing, because we don't have any users. And watch events unfold, when Spike can be bothered to put the server up, from one barely functioning angle.</p>
+  <aside class="sign-in">
+    <%= partial "partials/signin" %>
+  <aside class="sign-up">
+    <%= partial "partials/signup" %> 
   <a href='/preview'>Preview Chitter</a>
+  </section>
+  </main>
 <% end %>
 
