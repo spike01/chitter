@@ -6,6 +6,8 @@ require 'rack-flash'
 require './lib/user'
 require './lib/peep'
 DataMapper.setup(:default, "postgres://localhost/chitter_#{env}")
+require './lib/user'
+require './lib/peep'
 DataMapper.finalize
 DataMapper.auto_upgrade!
 
@@ -16,6 +18,7 @@ enable :sessions
 set :session_secret, 'shhhh'
 
   get '/' do
+    @peeps = Peep.all
     erb :index 
   end
 
@@ -72,8 +75,7 @@ set :session_secret, 'shhhh'
 
   post '/create/peep' do
     content = params[:content]
-    params[:timestamp] = Time.now
-    peep = current_user.peeps.from(params)
+    peep = current_user.peeps.create(content: content, timestamp: Time.now)
     redirect '/'
   end
 

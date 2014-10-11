@@ -8,4 +8,4 @@ Scenario: Seeing peeps
       And there are peeps
       And I see "HAI CHITTER"
     When someone posts a new peep
-    Then I should see "NEW PEEP\nHAI CHITTER"
+    Then I should see "NEW PEEP"
