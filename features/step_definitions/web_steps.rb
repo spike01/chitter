@@ -23,6 +23,11 @@ Given(/^there are peeps$/) do
              And I post "HAI CHITTER"} 
 end
 
+Given(/^there have been peeps$/) do
+  steps %Q{Given there are peeps
+           And I click "Sign out"}
+end
+
 When(/^I sign up$/) do
   fill_in('Full name', with: 'Spike Lindsey')
   fill_in('E-mail', with: 'spike01@gmail.com')
@@ -83,6 +88,10 @@ end
 
 When(/^someone posts a new peep$/) do
   steps %Q{When I post "NEW PEEP"}
+end
+
+When(/^I ask to preview tweets$/) do
+    click_link('Preview Chitter')
 end
 
 Then(/^I should see "(.*?)"$/) do |text|

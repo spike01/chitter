@@ -1,0 +1,4 @@
+<% @peeps.reverse.each do |peep| %>
+  <%= peep.user.fullname %> @<%= peep.user.username %>
+  <%= peep.content %>
+<% end %>

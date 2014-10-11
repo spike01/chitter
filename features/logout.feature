@@ -7,5 +7,5 @@ Scenario: Logging out
     Given I have previously signed up
     When I am signed in
      And I click "Sign out"
-    Then I should see "New to Twitter?"
+    Then I should see "New to Chitter?"
 

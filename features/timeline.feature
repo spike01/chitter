@@ -9,3 +9,9 @@ Scenario: Seeing peeps
       And I see "HAI CHITTER"
     When someone posts a new peep
     Then I should see "NEW PEEP"
+
+Scenario: Guest access
+    Given I am on the homepage
+      And there have been peeps
+    When I ask to preview tweets
+    Then I should see "HAI CHITTER"

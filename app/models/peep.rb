@@ -10,8 +10,4 @@ class Peep
   property :content, Text
   property :timestamp, Time
 
-  #def self.from(params)
-    #create(params)
-  #end
-
 end
