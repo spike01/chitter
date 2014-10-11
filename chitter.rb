@@ -1,12 +1,16 @@
 env = ENV["RACK_ENV"] || "development"
 
 require 'sinatra'
-require './lib/user'
+require 'rack-flash'
 
+require './lib/user'
 DataMapper.setup(:default, "postgres://localhost/chitter_#{env}")
 require './lib/user'
 DataMapper.finalize
 DataMapper.auto_upgrade!
+
+use Rack::Flash
+use Rack::MethodOverride
 
 enable :sessions
 set :session_secret, 'shhhh'
@@ -27,13 +31,17 @@ set :session_secret, 'shhhh'
   end
 
   post '/account/create' do
-    fullname = params["fullname"]
-    email = params["email"]
-    username = params["username"]
-    password = params["password"]
-    user = User.create(fullname: fullname, username: username, email: email, password: password)
-    session[:user_id] = user.id
-    redirect '/'
+    user = User.from(params)
+    if user.save
+      session[:user_id] = user.id
+      redirect '/'
+    else 
+      flash.now[:errors] = user.errors.full_messages
+      @fullname = params["fullname"]
+      @password = params["password"]
+      @username = params["username"]
+      erb :signup 
+    end
   end
 
   post '/sessions' do
@@ -44,9 +52,14 @@ set :session_secret, 'shhhh'
       session[:user_id] = user.id
       redirect '/'
     else 
-      puts "The username and password you entered did not match our records. Please double-check and try again."
+      flash[:notice] = "The username and password you entered did not match our records. Please double-check and try again."
       redirect '/signin'
     end
+  end
+
+  delete '/sessions' do
+    session[:user_id] = nil 
+    redirect '/'
   end
 
   get '/signin' do

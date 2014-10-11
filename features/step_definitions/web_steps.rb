@@ -6,6 +6,17 @@ Given(/^I am on the signup page$/) do
   visit('/signup')
 end
 
+Given(/^I am signed in$/) do
+  steps %Q{Given I am on the homepage
+           When I put in my login details}
+end
+
+Given(/^I have already signed up with an e\-mail address$/) do
+    steps %Q{Given I am on the homepage
+             When I sign up
+             And I choose a username}
+end
+
 When(/^I sign up$/) do
   fill_in('Full name', with: 'Spike Lindsey')
   fill_in('E-mail', with: 'spike01@gmail.com')
@@ -30,6 +41,25 @@ When(/^I put my login details incorrectly$/) do
   click_button('Sign in')
 end
 
+When(/^I have previously signed up$/) do
+    steps %Q{Given I am on the homepage
+             When I sign up
+             And I choose a username
+             And I click "Sign out"}
+end
+
+When(/^I sign up again$/) do
+    steps %Q{Given I have already signed up with an e-mail address}
+end
+
+When(/^I click "(.*?)"$/) do |button|
+    click_button('Sign out')
+end
+
+When(/^I see "(.*?)"$/) do |text|
+  expect(page).to have_content(text)
+end
+
 Then(/^I should see "(.*?)"$/) do |text|
   expect(page).to have_content(text)
 end
@@ -37,5 +67,6 @@ end
 Then(/^I should be taken to the signup page$/) do
   expect(page).to have_content("Join Chitter today")
 end
+
 
 
