@@ -1,4 +1,2 @@
-<% @peeps.reverse.each do |peep| %>
-  <%= peep.user.fullname %> @<%= peep.user.username %>
-  <%= peep.content %>
-<% end %>
+<%= partial "partials/peepdisplay" %>
+<%= partial "partials/signup" %>

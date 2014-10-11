@@ -1,24 +1,10 @@
 <% if current_user %>
   <%= current_user.fullname %>
   @<%= current_user.username %>
-    <% @peeps.reverse.each do |peep| %>
-      <%= peep.user.fullname %> @<%= peep.user.username %>
-      <%= peep.content %>
-    <% end %>
+  <%= partial "partials/peepdisplay" %>
 <% else %>
-  <form action='sessions' method='POST'>
-    <input name='login-uname' placeholder='Username'>
-    <input name='login-pword' type='password' placeholder='Password'>
-    <button type='submit'>Sign in</button>
-  </form>
-  <h1>New to Chitter?</h1><h2>Sign up</h2>
-  <form action='signup' method='POST' class='sign-up'>
-    <input name='fullname' placeholder='Full name'>
-    <input name='email' placeholder='E-mail'>
-    <input name='password' type='password' placeholder='Password'>
-    <button type='submit'>Sign up for Chitter</button>
-  </form>
-  
+  <%= partial "partials/signin" %>
+  <%= partial "partials/signup" %> 
   <a href='/preview'>Preview Chitter</a>
 <% end %>
 

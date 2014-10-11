@@ -1,0 +1,9 @@
+<% if current_user %>
+  <form id="new-peep" action="/create/peep">
+    <button type="submit">Peep</button>
+  </form>
+  <form id="sign-out" method="post" action="/sessions">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit">Sign out</button>
+  </form>
+<% end %>
