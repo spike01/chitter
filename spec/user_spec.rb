@@ -11,12 +11,22 @@ describe User do
   end
 
     it 'ensures that e-mail addresses are unique' do
-      2.times { create_user }
+      2.times { create_email_user }
       expect(User.count).to eq(1) 
     end
 
-    def create_user
-      User.create(fullname: 'fullname', username: 'username', email: 'email', 
+    it 'ensures that usernames are unique' do
+      2.times { create_username_user }
+      expect(User.count).to eq(1) 
+    end
+
+    def create_email_user
+      User.create(fullname: 'fullname', email: 'email', 
+                 password: 'password')
+    end
+
+    def create_username_user
+      User.create(fullname: 'fullname', username: 'username', 
                  password: 'password')
     end
 end

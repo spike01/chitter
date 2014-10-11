@@ -15,3 +15,9 @@ Scenario: Signing up with an e-mail that is already taken
     When I have previously signed up
       And I sign up again 
     Then I should see "This email is already taken"
+
+Scenario: Signing up with a username that is already taken
+    Given I am on the homepage
+    When I have previously signed up
+      And I sign up with the same username
+    Then I should see "This username is already taken"

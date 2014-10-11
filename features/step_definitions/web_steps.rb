@@ -60,6 +60,21 @@ When(/^I see "(.*?)"$/) do |text|
   expect(page).to have_content(text)
 end
 
+When(/^I sign up with the same username$/) do
+  visit '/'
+  fill_in('Full name', with: 'Spike Lindsey')
+  fill_in('E-mail', with: 'spike01@outlook.com')
+  fill_in('password', with: 'makersWelcome')
+  click_button('Sign up for Chitter')
+  steps %Q{When I choose a username}
+end
+
+When(/^I post "(.*?)"$/) do |content|
+  click_button('Peep')
+  fill_in('Compose new Peep', with: content)
+  click_button('Peep!')
+end
+
 Then(/^I should see "(.*?)"$/) do |text|
   expect(page).to have_content(text)
 end

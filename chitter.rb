@@ -4,8 +4,8 @@ require 'sinatra'
 require 'rack-flash'
 
 require './lib/user'
+require './lib/peep'
 DataMapper.setup(:default, "postgres://localhost/chitter_#{env}")
-require './lib/user'
 DataMapper.finalize
 DataMapper.auto_upgrade!
 
@@ -66,6 +66,16 @@ set :session_secret, 'shhhh'
     erb :signin
   end
 
+  get '/create/peep' do
+    erb :newpeep
+  end
+
+  post '/create/peep' do
+    content = params[:content]
+    params[:timestamp] = Time.now
+    peep = current_user.peeps.from(params)
+    redirect '/'
+  end
 
 helpers do
 
