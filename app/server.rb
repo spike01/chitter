@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'rack-flash'
 require 'sinatra/partial'
+require 'pry'
 
 require_relative 'controllers/application'
 require_relative 'controllers/signup'
