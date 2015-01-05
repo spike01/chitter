@@ -64,7 +64,7 @@ When(/^I sign up again$/) do
 end
 
 When(/^I click "(.*?)"$/) do |button|
-    click_button('Sign out')
+    click_button(button)
 end
 
 When(/^I see "(.*?)"$/) do |text|
