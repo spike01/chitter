@@ -71,7 +71,7 @@ When(/^I see "(.*?)"$/) do |text|
   expect(page).to have_content(text)
 end
 
-Whe(/^I sign up with the same username$/) do
+When(/^I sign up with the same username$/) do
   visit '/'
   fill_in('Full name', with: 'Spike Lindsey')
   fill_in('E-mail', with: 'spike01@outlook.com')
